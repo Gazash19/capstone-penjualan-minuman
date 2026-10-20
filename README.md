@@ -31,7 +31,7 @@ Pada pertemuan ke-6 ini, kami telah berhasil mengimplementasikan struktur *Datab
 
 ---
 
-## 🛠️ Cara Menjalankan Proyek (Untuk Teman Kelompok)
+## 🛠️ Cara Menjalankan Proyek
 Bagi anggota tim yang baru melakukan *clone* repositori ini, ikuti langkah berikut agar proyek bisa berjalan di laptop masing-masing:
 
 1. Nyalakan **Apache** dan **MySQL** di XAMPP.
