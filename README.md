@@ -1,59 +1,43 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🥤 Sistem Penjualan Minuman - Proyek Capstone
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Repositori ini berisi progres pengerjaan Proyek Capstone untuk mata kuliah Pemrograman Berbasis Platform. 
 
-## About Laravel
+**Pengembang:** Gaza, Nizar , Rafli  
+**Status Saat Ini:** Selesai Modul Praktikum Pertemuan 6
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📈 Langkah Progres (Pertemuan 6)
+Pada pertemuan ke-6 ini, kami telah berhasil mengimplementasikan struktur *Database* menggunakan **Migration** dan **Eloquent ORM** di Laravel. Berikut adalah rincian langkah yang sudah kami selesaikan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Konfigurasi Lingkungan (`.env`)**
+   - Menghubungkan Laravel dengan database MySQL lokal bernama `penjualan_minuman`.
 
-## Learning Laravel
+2. **Pembuatan Migration (Struktur Tabel)**
+   - Membuat tabel `bahan_baku`: Menyimpan data stok bahan baku (id, nama_bahan, stok, satuan).
+   - Membuat tabel `menu`: Menyimpan daftar menu minuman (id, nama_menu, harga_jual).
+   - Membuat tabel `penjualan`: Menyimpan histori transaksi yang berelasi dengan tabel menu menggunakan *Foreign Key* (`menu_id`).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+3. **Konfigurasi Model Eloquent ORM**
+   - Mengatur `protected $table` agar nama tabel sesuai dengan rancangan ERD (contoh: tabel `menu` bukan `menus`).
+   - Mengamankan database dengan mendaftarkan kolom yang boleh diisi melalui `protected $fillable` (mencegah *mass-assignment*).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. **Testing Database via Tinker**
+   - Memasukkan data uji coba pertama (misal: "Es Kopi Susu") menggunakan antarmuka terminal `php artisan tinker` tanpa menggunakan *query* SQL manual.
 
-## Laravel Sponsors
+5. **Integrasi MVC (Model-View-Controller)**
+   - Membuat `MenuController` untuk mengambil data asli dari database.
+   - Menampilkan data *real* dari database ke halaman *browser* pada *route* `/menu` (View: `index.blade.php`).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ Cara Menjalankan Proyek (Untuk Teman Kelompok)
+Bagi anggota tim yang baru melakukan *clone* repositori ini, ikuti langkah berikut agar proyek bisa berjalan di laptop masing-masing:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Nyalakan **Apache** dan **MySQL** di XAMPP.
+2. Buka `http://localhost/phpmyadmin` dan buat database baru dengan nama `penjualan_minuman`.
+3. Buka terminal di VS Code, ketik: `composer install` (untuk mengunduh *library*).
+4. Salin file `.env.example` menjadi `.env`. Buka filenya, pastikan `DB_DATABASE=penjualan_minuman` dan `DB_USERNAME=root`.
+5. Ketik di terminal: `php artisan key:generate`.
+6. Bentuk tabel di laptopmu dengan perintah: `php artisan migrate`.
+7. Jalankan server: `php artisan serve`, lalu buka `http://localhost:8000/menu`.
