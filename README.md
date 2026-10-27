@@ -2,7 +2,9 @@
 
 Repositori ini berisi progres pengerjaan Proyek Capstone untuk mata kuliah Pemrograman Berbasis Platform. 
 
-**Pengembang:** Gaza, Nizar , Rafli  
+**Pengembang: Gaza Al Aqsho (1560)
+              Nizar (1552)
+              Rafli  (15)
 **Status Saat Ini:** Selesai Modul Praktikum Pertemuan 6
 
 ---
